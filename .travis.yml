@@ -8,8 +8,8 @@ script: npm run build
 
 deploy:
  provider: pages
- cleanup: true
- edge: true
+ skip_cleanup: true
+ keep_history: true
  github_token: $GITHUB_TOKEN_VUE_TRAVIS
  local_dir: dist
  on:
