@@ -35,7 +35,6 @@ const routes = [
 
 const router = new VueRouter({
   routes,
-  mode: 'history'
 })
 
 router.afterEach((to, from, next) => {
