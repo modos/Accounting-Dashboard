@@ -27,9 +27,15 @@ export default new Vuex.Store({
 
       // change route to dashboard
       if (router.currentRoute.path === '/') {
-        router.push('/about')
+        router.push({name: 'Dashboard'})
       }
     },
+
+    async signOut({ dispatch }){
+      await fb.auth.signOut()
+
+      router.push({name: 'Home'})
+    }
   },
   modules: {
   }
