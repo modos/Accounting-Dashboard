@@ -9,6 +9,7 @@ script: npm run build
 deploy:
  provider: pages
  cleanup: true
+ edge: true
  github_token: $GITHUB_TOKEN_VUE_TRAVIS
  local_dir: dist
  on:
