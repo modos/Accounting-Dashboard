@@ -7,8 +7,24 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    drawer: true,
+    main_dialog: false,
+    sub_dialog: false,
+    sub_dialog_title: ''
   },
   mutations: {
+    toggleDrawer(state, payload) {
+      state.drawer = payload
+    },
+    toggleMainDialog(state, payload) {
+      state.main_dialog = payload
+    },
+    toggleSubDialog(state, payload){
+      state.sub_dialog = payload
+    },
+    setSubDialogTitle(state, payload){
+      state.sub_dialog_title = payload
+    }
   },
   actions: {
     async login({ dispatch }, form) {
@@ -35,6 +51,20 @@ export default new Vuex.Store({
       await fb.auth.signOut()
 
       router.push({name: 'Home'})
+    }
+  },
+  getters: {
+    drawer: (state) => {
+      return state.drawer
+    },
+    main_dialog: (state) => {
+      return state.main_dialog
+    },
+    sub_dialog: (state) => {
+      return state.sub_dialog
+    },
+    sub_dialog_title: (state) => {
+      return state.sub_dialog_title
     }
   },
   modules: {

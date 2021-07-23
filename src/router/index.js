@@ -37,17 +37,11 @@ const router = new VueRouter({
   routes,
 })
 
-router.afterEach((to, from, next) => {
-  
-})
-
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
 
-  if (to.name === 'Home' && auth.currentUser) next({ name: 'Dashboard' })
-
   if (requiresAuth && !auth.currentUser) {
-    next('/')
+    next({name: 'Home'})
   } else {
     next()
   }

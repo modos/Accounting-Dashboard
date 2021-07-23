@@ -17,7 +17,7 @@
           ></v-text-field>
 
          <v-card-actions class="justify-center">
-               <v-btn color="#FFD369" @click="submit">
+               <v-btn color="#FFD369" class="black--text" @click="submit">
     <h3>ورود</h3>
             </v-btn>
         </v-card-actions>
