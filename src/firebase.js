@@ -17,11 +17,21 @@ firebase.initializeApp(firebaseConfig)
 
 const db = firebase.firestore()
 const auth = firebase.auth()
+const timeStamp = firebase.firestore.FieldValue.serverTimestamp()
 
 const usersCollection = db.collection('users')
+const buyAndPayCollection = db.collection('buy_and_pay')
+const recieveAndSellCollection = db.collection('recieve_and_sell')
+const movingFundsCollection = db.collection('moving_funds')
+const notesCollection = db.collection('notes')
 
 export {
   db,
   auth,
+  timeStamp,
   usersCollection,
+  buyAndPayCollection,
+  recieveAndSellCollection,
+  movingFundsCollection,
+  notesCollection
 }

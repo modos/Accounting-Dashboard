@@ -18,7 +18,12 @@
 
          <v-card-actions class="justify-center">
                <v-btn color="#FFD369" class="black--text" @click="submit">
-    <h3>ورود</h3>
+                   <v-progress-circular v-if="loading"
+                           indeterminate
+                           :size="20"
+                           color="black"
+                         ></v-progress-circular>
+                       <h3 v-else>ورود</h3>
             </v-btn>
         </v-card-actions>
         </v-form>
@@ -29,15 +34,17 @@
 
 <script>
   export default {
-    name: 'Home',
+    name: 'Login',
     data() {
       return {
         email: '',
-        password: ''
+        password: '',
+        loading: false
       }
     },
     methods: {
       submit(){
+        this.loading = true
         this.$store.dispatch('login', {
           email: this.email,
           password: this.password

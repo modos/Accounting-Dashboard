@@ -31,7 +31,7 @@ export default {
              main_menu: [
                 {name: "پرداخت و خرید", description: "ثبت پرداخت‌ها و خریدهای پروژه، مانند: خرید مصالح یا ماشین‌آلات و یا پرداخت هزینه‌های عمومی یا دستمزدها و یا اجازه ماشین‌آلات"},
                 {name: "دریافت و فروش", description: "ثبت دریافت‌ها، صورت وضعیت‌های درآمدی و فروش‌ها، مانند: دریافت از سرمایه‌گذار یا شرکا، فروش ضایعات، فروش ماشین‌آلات و …",},
-                {name: "ثبت کارکرد", description: "زمان‌های کارکرد کارکنان و صورتحساب پیمانکاران را ثبت نمایید تا مپسا به صورت خودکار حقوق آن‌ها را محاسبه و در حساب ایشان اعمال کند.",},
+                {name: "ثبت کارکرد", description: "زمان‌های کارکرد کارکنان و صورتحساب پیمانکاران را ثبت نمایید تا نرم افزار به صورت خودکار حقوق آن‌ها را محاسبه و در حساب ایشان اعمال کند.",},
                 {name: "جابجایی وجه", description: "ثبت جابجایی‌های انجام شده بین حساب‌های بانکی یا صندوق‌ها.",},
                 {name: "تهیه گزارش تنخواه", description: "پرداخت‌ها و دریافت‌های خود را در قالب یک گزارش تنخواه تهیه و برای کارفرما یه سایر اشخاص ارسال کنید.",},
 
@@ -40,8 +40,35 @@ export default {
     },
     methods: {
         openSubDialog(item){
-            this.$store.commit('toggleSubDialog', !this.$store.getters.sub_dialog)
-            this.$store.commit('setSubDialogTitle', item.name)
+
+            switch (item.name) {
+                case 'پرداخت و خرید':
+                        this.$store.commit('toggleBuyAndPayDialog', !this.$store.getters.buy_and_pay_dialog)
+                        this.$store.commit('setSubDialogTitle', item.name)
+                    break
+                case 'دریافت و فروش':
+                        this.$store.commit('toggleRecieveAndSellDialog', !this.$store.getters.recieve_and_sell_dialog)
+                        this.$store.commit('setSubDialogTitle', item.name)
+                    break
+                case 'جابجایی وجه':
+                        this.$store.commit('toggleMovingFundsDialog', !this.$store.getters.moving_funds_dialog)
+                        this.$store.commit('setSubDialogTitle', item.name)
+                    break
+                case 'ثبت کارکرد':
+                        this.$store.commit('toggleFunctionsDialog', !this.$store.functions_dialog)
+                        this.$store.commit('setSubDialogTitle', item.name)
+                    break
+                case 'تهیه گزارش تنخواه':
+                        this.$store.commit('togglePettyCashDialog', !this.$store.petty_cash_dialog)
+                        this.$store.commit('setSubDialogTitle', item.name)
+                    break                                                     
+            
+                default:
+                    break
+            }
+
+            // this.$store.commit('toggleSubDialog', !this.$store.getters.sub_dialog)
+            // this.$store.commit('setSubDialogTitle', item.name)
             this.toggleMainDialog = false
         }
     },

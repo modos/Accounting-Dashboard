@@ -1,7 +1,9 @@
 import Vue from 'vue'
-import Dashboard from '../views/Dashboard.vue'
+import Dashboard from '../views/Dashboard/Dashboard.vue'
+import AccountReview from '../views/Dashboard/AccountReview.vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Main from '../views/Dashboard/Main.vue'
+import Login from '../views/Login.vue'
 import { auth } from '../firebase'
 
 Vue.use(VueRouter)
@@ -9,8 +11,8 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    name: 'Login',
+    component: Login,
   },
   {
     path: '/dashboard',
@@ -19,17 +21,17 @@ const routes = [
     meta: {
       requiresAuth: true
     },
-  },
-  {
-    path: '/about',
-    name: 'About',
-    meta: {
-      requiresAuth: true
-    },
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    children: [
+      {
+        name: 'Main',
+        path: '',
+        component: Main
+      },
+      {
+        path: 'accountreview',
+        component: AccountReview
+      }
+    ]
   }
 ]
 
@@ -41,7 +43,7 @@ router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
 
   if (requiresAuth && !auth.currentUser) {
-    next({name: 'Home'})
+    next({name: 'Login'})
   } else {
     next()
   }
