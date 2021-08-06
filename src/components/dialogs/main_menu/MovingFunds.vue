@@ -44,7 +44,8 @@ export default {
                     amount: this.amount,
                     description: this.description,
                     source_account: this.source_account,
-                    destination_account: this.destination_account
+                    account_side: this.destination_account,
+                    date: new Date().toLocaleDateString('fa-IR')
 
              })
              this.$refs.form.reset()

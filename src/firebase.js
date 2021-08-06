@@ -1,6 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
+import 'firebase/storage'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDdq2aqoduVWbIrKK9HDSMUmFWPduffaM0',
@@ -24,6 +25,8 @@ const buyAndPayCollection = db.collection('buy_and_pay')
 const recieveAndSellCollection = db.collection('recieve_and_sell')
 const movingFundsCollection = db.collection('moving_funds')
 const notesCollection = db.collection('notes')
+const employeesCollection = db.collection('employees')
+const storage = firebase.storage()
 
 export {
   db,
@@ -33,5 +36,7 @@ export {
   buyAndPayCollection,
   recieveAndSellCollection,
   movingFundsCollection,
-  notesCollection
+  notesCollection,
+  employeesCollection,
+  storage
 }

@@ -22,24 +22,15 @@ password : atlasdemo
 
 ## Last Commit Changes
 
-✔ Adding Local Storage for Saving User's Data
+✔ Account Review Section has been completed
 <br>
 
-✔ Fixing Some UI Bugs
+
+✔ New: Employees Section
 <br>
 
-✔ Refactoring
+✔ Refactoring & Fixed some issues
 <br>
-
-✔ Customize Scroll Bar
-<br>
-
-✔ New Feature: Daily Notes
-<br>
-
-✔ New Page: Account Review
-
-
 
 <hr>
 

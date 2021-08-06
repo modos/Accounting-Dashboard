@@ -4,6 +4,7 @@ import AccountReview from '../views/Dashboard/AccountReview.vue'
 import VueRouter from 'vue-router'
 import Main from '../views/Dashboard/Main.vue'
 import Login from '../views/Login.vue'
+import Employees from '../views/Dashboard/Employees.vue'
 import { auth } from '../firebase'
 
 Vue.use(VueRouter)
@@ -23,13 +24,20 @@ const routes = [
     },
     children: [
       {
-        name: 'Main',
+        name: 'main',
         path: '',
         component: Main
       },
       {
+        name: 'accountreview',
         path: 'accountreview',
         component: AccountReview
+      },
+
+      {
+        name: 'employees',
+        path: 'employees',
+        component: Employees
       }
     ]
   }

@@ -47,7 +47,7 @@ export default {
             menu: [
                 { text: 'خانه', icon: 'mdi-home' },
                 { text: 'مرور حساب ها', icon: 'mdi-account' },
-                { text: 'گزارش مانده حساب ها', icon: 'mdi-flag' },
+                { text: 'کارمندان', icon: 'mdi-flag' },
                 { text: 'قیمت تمام شده', icon: 'mdi-clock' },
                 { text: 'مرور چک ها', icon: 'mdi-account-check' },
                 { text: 'گزارش تنخواه', icon: 'mdi-basket' },
@@ -63,12 +63,16 @@ export default {
         navigate(i) {
           switch (i) {
             case 0:
-              router.push('/dashboard')
+                if (router.currentRoute.path !== '/dashboard'){
+                  router.push({name: 'main'})
+                }
               break
             case 1:
-              router.push('/dashboard/accountreview')
+              router.push({name: 'accountreview'})
               break              
-          
+            case 2:
+              router.push({name: 'employees'})
+              break            
             default:
               break
           }
