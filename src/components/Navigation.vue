@@ -64,7 +64,7 @@ export default {
           switch (i) {
             case 0:
                 if (router.currentRoute.path !== '/dashboard'){
-                  router.push({name: 'main'})
+                  router.push({name: 'main'}).catch(err => {})
                 }
               break
             case 1:

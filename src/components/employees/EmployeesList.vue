@@ -4,6 +4,7 @@
             <v-img :src="employee.photo" width="68" height="68" style="float: left;"></v-img>
             <p class="d-inline-block">{{employee.name}}</p><br>
             <p class="d-inline-block">شماره حساب: {{employee.account}}</p>
+            <p class="d-inline-block">شماره تماس: {{employee.mobile}}</p>
         </v-container>
     </div>
 </template>

@@ -17,7 +17,7 @@
           ></v-text-field>
 
          <v-card-actions class="justify-center">
-               <v-btn color="#FFD369" class="black--text" @click="submit">
+               <v-btn color="#FFD369" class="black--text" @click="submit()">
                    <v-progress-circular v-if="loading"
                            indeterminate
                            :size="20"

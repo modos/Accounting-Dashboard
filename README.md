@@ -17,20 +17,18 @@ password : atlasdemo
 🔸Veux
 🔸Firebase
 🔸Local Storage
+🔸Unit Testing with Jest
 
 <hr>
 
 ## Last Commit Changes
 
-✔ Account Review Section has been completed
+✔ Unit Testing for components, views and functions with Jest
 <br>
 
-
-✔ New: Employees Section
+✔ Fixing Router Navigation Redunant error & some naming bugs
 <br>
 
-✔ Refactoring & Fixed some issues
-<br>
 
 <hr>
 

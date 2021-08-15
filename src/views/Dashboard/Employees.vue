@@ -16,8 +16,8 @@
 
 <script>
 
-import AddEmployeeDialog from '../../components/dialogs/employees/AddEmployee'
-import EmployeesList from '../../components/dialogs/employees/EmployeesList.vue'
+import AddEmployeeDialog from '../../components/employees/AddEmployee'
+import EmployeesList from '../../components/employees/EmployeesList.vue'
 
 export default {
     name: 'Employees',

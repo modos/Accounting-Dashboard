@@ -6,12 +6,12 @@ const getUser = () => {
     return JSON.parse(localStorage.getItem('user'))
 }
 
-const getUesrID = () => {
+const getUserID = () => {
     return JSON.parse(localStorage.getItem('user')).id
 }
 
 export {
     saveUser,
     getUser,
-    getUesrID
+    getUserID
 }

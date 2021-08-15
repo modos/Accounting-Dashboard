@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import * as fb from '../firebase'
 import router from '../router/index'
-import { saveUser, getUesrID } from '../storage'
+import { saveUser, getUserID, getUser } from '../storage'
 
 Vue.use(Vuex)
 
@@ -100,11 +100,12 @@ export default new Vuex.Store({
   actions: {
     async login({ dispatch }, form) {
       // sign user in
-      const { user } = await fb.auth.signInWithEmailAndPassword(form.email, form.password)
+      let { user } = await fb.auth.signInWithEmailAndPassword(form.email, form.password)
 
-      dispatch('fetchUserProfile', user)
+     dispatch('fetchUserProfile', user) 
     },
     async fetchUserProfile({ dispatch }, user) {
+
       // fetch user profile
       const userProfile = await fb.usersCollection.doc(user.uid).get()
 
@@ -112,31 +113,31 @@ export default new Vuex.Store({
       
       // change route to dashboard
       if (router.currentRoute.path === '/') {
-        router.push({name: 'main'})
+        router.push({name: 'dashboard'}).catch(err => {})
       }
     },
 
     async submitBuyAndPay ({ dispatch }, data){
        await fb.buyAndPayCollection.doc().set({
-         ...data, time: fb.timeStamp, user_id: getUesrID()
+         ...data, time: fb.timeStamp, user_id: getUserID()
        })
     },
 
     async submitRecieveAndSell ({ dispatch }, data){
       await fb.recieveAndSellCollection.doc().set({
-        ...data, time: fb.timeStamp, user_id: getUesrID()
+        ...data, time: fb.timeStamp, user_id: getUserID()
       })
     },
 
     async submitMovingFunds ({ dispatch }, data){
       await fb.movingFundsCollection.doc().set({
-        ...data, time: fb.timeStamp, user_id: getUesrID()
+        ...data, time: fb.timeStamp, user_id: getUserID()
       })
     },
 
     async getNotes ({commit}, data) {
 
-        const notes = await fb.notesCollection.where("user_id", "==", getUesrID()).get()
+        const notes = await fb.notesCollection.where("user_id", "==", getUserID()).get()
         const temp = []
         notes.forEach((doc) => {
           temp.push(doc.data().content)
@@ -163,7 +164,7 @@ export default new Vuex.Store({
 
     async getCashFlowsPay ({ commit }, data) {
 
-      const valuesPay = await fb.buyAndPayCollection.where("user_id", "==", getUesrID()).get()
+      const valuesPay = await fb.buyAndPayCollection.where("user_id", "==", getUserID()).get()
       const tempPay = []
       valuesPay.forEach((doc) => {
         tempPay.push(parseInt(doc.data().amount))
@@ -174,7 +175,7 @@ export default new Vuex.Store({
 
     async getCashFlowsRecieve ({ commit }, data) {
 
-      const valuesRecieve = await fb.recieveAndSellCollection.where("user_id", "==", getUesrID()).get()
+      const valuesRecieve = await fb.recieveAndSellCollection.where("user_id", "==", getUserID()).get()
       const tempRecieve = []
       valuesRecieve.forEach((doc) => {
         tempRecieve.push(parseInt(doc.data().amount))
@@ -201,13 +202,13 @@ export default new Vuex.Store({
       })
       
 
-      const valuesRecieve = await fb.recieveAndSellCollection.where("user_id", "==", getUesrID()).get()
+      const valuesRecieve = await fb.recieveAndSellCollection.where("user_id", "==", getUserID()).get()
       const tempRecieve = []
       valuesRecieve.forEach((doc) => {
         tempRecieve.push({...doc.data(), type: 'دریافت و فروش'})
       })
 
-      const valuesPay = await fb.buyAndPayCollection.where("user_id", "==", getUesrID()).get()
+      const valuesPay = await fb.buyAndPayCollection.where("user_id", "==", getUserID()).get()
       const tempPay = []
       valuesPay.forEach((doc) => {
         tempPay.push({...doc.data(), type: 'پرداخت و خرید'})
@@ -218,7 +219,7 @@ export default new Vuex.Store({
 
     async addNote ({commit}, data) {
       await fb.notesCollection.doc().set({
-        content: data, user_id: getUesrID()
+        content: data, user_id: getUserID()
       })
 
       commit('addNote', data)
