@@ -1,6 +1,6 @@
 <template>
         <div class="mt-6" style="max-width: 80%;">
-                    <v-btn icon class="float-left" @click="addNote()"><v-icon>mdi-plus</v-icon></v-btn>
+                    <v-btn icon class="float-left atlas-add-note-button" @click="addNote()"><v-icon>mdi-plus</v-icon></v-btn>
                     <h2 class="notes-title">یادداشت های شما</h2>
         <hr class="notes-line">
     <div class="notes-main-div  d-flex flex-wrap">

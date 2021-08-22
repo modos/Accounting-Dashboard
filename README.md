@@ -18,12 +18,17 @@ password : atlasdemo
 🔸Firebase
 🔸Local Storage
 🔸Unit Testing with Jest
+🔸E2E Testing with Cypress
+
 
 <hr>
 
 ## Last Commit Changes
 
 ✔ Unit Testing for components, views and functions with Jest
+<br>
+
+✔ E2E Testing 
 <br>
 
 ✔ Fixing Router Navigation Redunant error & some naming bugs

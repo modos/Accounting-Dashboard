@@ -2,17 +2,19 @@
 
           <v-dialog v-model="toggleNoteDialog" scrollable max-width="60%" content-class="custom_background">
             <div class="d-block mt-3">   
-                 <span class="ml-3 mr-3" @click="close_dialog()" role="button"><v-icon>mdi-arrow-right</v-icon></span>
+                 <span class="ml-3 mr-3 atlas-close-add-note-dialog-button" @click="close_dialog()" role="button"><v-icon>mdi-arrow-right</v-icon></span>
                     <h3 class="d-inline">افزودن یادداشت جدید</h3>
                     <v-text-field
                      label="متن یادداشت" 
                      required
                      v-model="content"
-                    style="max-width: 50%; margin: 0 auto"></v-text-field>
+                    style="max-width: 50%; margin: 0 auto"
+                    class="atlas-input-note-title"
+                    ></v-text-field>
 
 <div style="width: 100%;" class="d-flex justify-center mt-3 mb-3">
                   <v-btn elevation="5" large rounded color="#FFD369" 
-             class="black--text" max-width="10%" @click="submit()">
+             class="black--text atlas-add-note-button-dialog" max-width="10%" @click="submit()">
               ثبت 
             </v-btn>
 </div>

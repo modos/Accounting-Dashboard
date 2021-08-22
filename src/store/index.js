@@ -113,7 +113,7 @@ export default new Vuex.Store({
       
       // change route to dashboard
       if (router.currentRoute.path === '/') {
-        router.push({name: 'dashboard'}).catch(err => {})
+        router.push({name: 'main'}).catch(err => {})
       }
     },
 
